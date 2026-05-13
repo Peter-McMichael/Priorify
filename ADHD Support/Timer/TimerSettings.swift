@@ -12,6 +12,11 @@ import SwiftUI
 struct TimerSettings: View {
     //MARK: - properties
     //using appstorage here means the toggles automatically sync with the timer view
+    @EnvironmentObject private var todoStorage: TodoStorage
+    
+    @AppStorage("moveTasksDown") private var moveTasksDown: Bool = true
+    
+    
     @AppStorage("vibrateOnSessionEnd") private var vibrateOnSessionEnd: Bool = true
     @AppStorage("soundOnSessionEnd") private var soundOnSessionEnd: Bool = true
     @AppStorage("autoStartNextSession") private var autoStartNextSession: Bool = false
@@ -24,6 +29,18 @@ struct TimerSettings: View {
             get: { AppTheme(rawValue: appThemeRaw) ?? .classic},
             set: { appThemeRaw = $0.rawValue }
             )
+    }
+    
+    private var moveTasksDownBinding: Binding<Bool> {
+        
+        Binding(
+        get: { moveTasksDown },
+        
+        set: { newValue in
+            moveTasksDown = newValue
+            todoStorage.setMoveTasksDown(newValue)
+        }
+        )
     }
    
     //MARK: - body
@@ -51,6 +68,9 @@ struct TimerSettings: View {
             }
             Section(header: Text("Ambience")) {
                 Toggle("Play ambient sound", isOn: $ambientEnabled)
+            }
+            Section(header: Text("To Do List")) {
+                Toggle("Move completed tasks to the bottom", isOn: moveTasksDownBinding)
             }
            
             Section(footer: Text("Sounds and vibration still respect the iPhone mute switch and system Focus settings.")) {

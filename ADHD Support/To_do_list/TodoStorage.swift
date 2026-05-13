@@ -21,16 +21,38 @@ final class TodoStorage: ObservableObject {
 
     //this is the key name we use in userdefaults
     private let storageKey = "todoItemsJSON"
+    
+    
+    private let moveTasksDownKey = "moveTasksDown"
+    private var moveTasksDown: Bool
 
+    
+    
 
     //MARK: - init
     init() {
         //load saved tasks when the app starts
+        
+        moveTasksDown =
+        UserDefaults.standard.object(forKey: moveTasksDownKey) as? Bool ?? true
+        
         loadTasks()
 
         rebuildSections()
+        
+      
     }
 
+    
+    func setMoveTasksDown(_ shouldMove: Bool) {
+        guard moveTasksDown != shouldMove else { return }
+        
+        moveTasksDown = shouldMove
+        
+        UserDefaults.standard.set(shouldMove, forKey: moveTasksDownKey)
+        
+        rebuildSections()
+    }
 
     //MARK: - actions
     func addTask(title: String, userPriorityOverride: Priority? = nil, achievementStore: AchievementStore? = nil) {
@@ -126,9 +148,15 @@ final class TodoStorage: ObservableObject {
     //MARK: - sorting
     private func sortForDisplay(_ tasks: [TodoItem]) -> [TodoItem] {
         //this decides the order tasks appear inside a category
+        
+        
+    
+        
         tasks.sorted { a, b in
+            
+        
             //not done tasks first
-            if a.isDone != b.isDone { return b.isDone }
+            if moveTasksDown && a.isDone != b.isDone { return b.isDone }
 
 
             //higher priority first

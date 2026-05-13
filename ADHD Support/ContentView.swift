@@ -11,7 +11,7 @@ struct ContentView: View {
     @State private var showAchievements = false
     @State private var selectedTab: MainTab = .timer
     @State private var hasLoadedTodo = false
-    
+
     
     
     
@@ -88,6 +88,11 @@ struct ContentView: View {
                     .tabItem { Label("Timer", systemImage: "timer") }
                     .tag(MainTab.timer)
             }
+        
+        .tabViewStyle(.page(indexDisplayMode: .never))
+        
+     
+     
             .toolbarBackground(theme.chromeColor, for: .tabBar)
             .toolbarBackground(.visible, for: .tabBar)
             .toolbarColorScheme(.dark, for: .tabBar)
@@ -135,6 +140,22 @@ struct ContentView: View {
         
             .animation(.spring(response: 0.35, dampingFraction: 0.85), value: achievementStore.newlyUnlockedAchievement)
         }
+    
+    
+    
+    private var TabButtons: some View {
+        HStack {
+            VStack {
+                Image(systemName: "checklist")
+                Text("To Do")
+                    .font(.caption)
+                
+            }
+            .onTapGesture {
+                selectedTab = .todo
+            }
+        }
+    }
     }
     
     private struct TimerTab: View {
@@ -204,6 +225,8 @@ struct ContentView: View {
             .shadow(radius: 10)
         }
     }
+
+
 
 private struct AmbientMuteButton: View {
     let theme: AppTheme

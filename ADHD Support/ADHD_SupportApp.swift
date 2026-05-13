@@ -44,6 +44,10 @@ struct ADHD_SupportApp: App {
 private struct SplashLoadingView: View {
     let progress: Double
     
+    private var progressPercent: Int {
+        Int((progress * 100).rounded())
+    }
+    
     var body: some View {
         VStack(spacing: 28) {
             Image("splashscreen")
@@ -54,6 +58,10 @@ private struct SplashLoadingView: View {
                 .progressViewStyle(.linear)
                 .frame(width: 220)
                 .tint(.cyan)
+            
+            
+            Text("\(progressPercent) %")
+                .foregroundColor(.cyan)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.white)
