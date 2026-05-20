@@ -6,4 +6,4 @@
 
 3. BUG: I think we need to work on the ML, I will try to work on it later. Right now, it is not recognizing any keywords and marking every task as "Medium (0%)"
 
-4. BUG: After a few seconds of inactivity, the screen becomes unresponsive and some of the buttons stop opertating properly.
+4. BUG: After a few seconds of inactivity, the screen becomes unresponsive and some of the buttons stop opertating properly. After the first time you touch the screen in any way (slider, "Add a task...", etc.), the screen becomes completely unresponsive and all the buttons stop working.
