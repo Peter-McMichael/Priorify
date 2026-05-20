@@ -33,13 +33,12 @@ final class AchievementStore: ObservableObject {
         let tasksAddedCount: Int
     }
     init() {
+        
+    }
+    func loadForStartup() {
         loadProgress()
-        
         loadCounters()
-        
         entriesExist()
-        
-        
     }
     
     func isUnlocked(_ id: AchievementID) -> Bool {

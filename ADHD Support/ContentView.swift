@@ -17,6 +17,26 @@ struct ContentView: View {
     
     @EnvironmentObject private var achievementStore: AchievementStore
     
+    
+    private var tabSwipeGesture: some Gesture {
+        DragGesture(minimumDistance: 40) //swipe distance
+            .onEnded { value in //when swipe motion is completed
+                let horizontal = value.translation.width
+                let vertical = value.translation.height
+                
+                guard abs(horizontal) > abs(vertical) * 1.5 else { return } //prevents from swiping and deleting tasks
+                
+                guard abs(horizontal) > 90 else { return }
+                
+                if horizontal < 0, selectedTab == .todo {
+                    selectedTab = .timer
+                    // if you are in todo page and swipe is negative (to certain side), change tabs
+                } else if horizontal > 0, selectedTab == .timer {
+                    selectedTab = .todo
+                }
+            }
+    }
+    
     private var theme: AppTheme { AppTheme(rawValue: appThemeRaw) ?? .classic }
     
     var body: some View {
@@ -87,9 +107,28 @@ struct ContentView: View {
                 TimerTab(theme: theme, showSettings: $showSettings)
                     .tabItem { Label("Timer", systemImage: "timer") }
                     .tag(MainTab.timer)
-            }
+            } //tabview ending brace
         
-        .tabViewStyle(.page(indexDisplayMode: .never))
+        
+        //overlay acts as hitzone for only swipe gesture
+        .overlay {
+            HStack {
+                Color.clear //so that you can see other buttons.
+                    .frame(width: 100)
+                    .contentShape(Rectangle())
+                    .gesture(tabSwipeGesture)
+                
+                Spacer()
+                
+                Color.clear
+                    .frame(width: 100)
+                    .contentShape(Rectangle())
+                    .gesture(tabSwipeGesture)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+        
+     
         
      
      

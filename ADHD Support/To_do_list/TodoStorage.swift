@@ -36,13 +36,14 @@ final class TodoStorage: ObservableObject {
         moveTasksDown =
         UserDefaults.standard.object(forKey: moveTasksDownKey) as? Bool ?? true
         
+    }
+
+    func loadForStartup() {
         loadTasks()
 
         rebuildSections()
         
-      
     }
-
     
     func setMoveTasksDown(_ shouldMove: Bool) {
         guard moveTasksDown != shouldMove else { return }

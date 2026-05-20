@@ -3,6 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>UILaunchScreen</key>
-	<dict/>
+	<dict>
+		<key>UIImageName</key>
+		<string>FakeSplashScreen</string>
+	</dict>
 </dict>
 </plist>
