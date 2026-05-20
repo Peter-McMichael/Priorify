@@ -9,3 +9,5 @@
 4. BUG: After a few seconds of inactivity, the screen becomes unresponsive and some of the buttons stop opertating properly. After the first time you touch the screen in any way (slider, "Add a task...", etc.), the screen becomes completely unresponsive and all the buttons stop working. Possible solution: I think the Swipe Gesture may be somehow blocking clicks in certain places.
    
 6. Also could you put the ReadMe template inside the Google Drive? I can't seem to find it.
+
+7. I think that another feature we could add to the ToDo List is an option to color code the tasks that way it is easy to tell the difference between each one.
