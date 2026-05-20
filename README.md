@@ -1,4 +1,4 @@
-<div align="center"><h1>** OMG ITS WORKING 🚨🚨🚨🚨**</h1></div>
+<div align="center"><h1>** OMG ITS WORKING 🚨🚨🚨🚨 (BUT I FOUND MORE BUGS) 😭**</h1></div>
 
 1. The progress bar is working perfectly for some reason after testing it just now on the iPhone 17 simulator. IDK why blank screen was showing earlier. I didnt change anything at all in the code.
 
