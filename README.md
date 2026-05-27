@@ -1,10 +1,13 @@
-<div align="center"><h1>** ✨🎆✨🎆✨🎆 HOLLIE! READ HEREEEEEEE ☀️☀️☀️☀️**</h1></div>
+<div align="center"><h1>** OMG SPLASHSCREEN IS WORKING 🚨🚨🚨🚨 (BUT I FOUND MORE BUGS) 😭**</h1></div>
 
+1. The progress bar is working perfectly for some reason after testing it just now on the iPhone 17 simulator. IDK why blank screen was showing earlier. I didnt change anything at all in the code.
 
-**2/10/26 CLASS**\
-\
-Should work on rebranding app and making UI look cleaner. Also train the priorities .csv file to be better.
+2. Could I have access to the BVT sheet? for some reason its saying I don't have permission. 
 
-**2/7/26**\
-\
-Added an underwater theme and space themes with ambience. expanded .csv file to include more categories (social, personal, errands, etc.). The task identification is working well. Planning on making priority level dictate the position of task on list next, and include play button on task that leads to optimized pomodoro. FIRST README!
+3. BUG: I think we need to work on the ML, I will try to work on it later. Right now, it is not recognizing any keywords and marking every task as "Medium (0%)"
+
+4. BUG: After a few seconds of inactivity, the screen becomes unresponsive and some of the buttons stop opertating properly. After the first time you touch the screen in any way (slider, "Add a task...", etc.), the screen becomes completely unresponsive and all the buttons stop working. Possible solution: I think the Swipe Gesture may be somehow blocking clicks in certain places.
+   
+6. Also could you put the ReadMe template inside the Google Drive? I can't seem to find it.
+
+7. I think that another feature we could add to the ToDo List is an option to color code the tasks that way it is easy to tell the difference between each one.
