@@ -4,14 +4,24 @@ struct TodoRow: View, Equatable {
     let task: TodoItem
     let theme: AppTheme
     let onToggle: () -> Void
+    
+    
 
     //WHY: row needs a way to send changes back up
     //HOW: parent passes in a closure that updates storage
     let onSetPriorityOverride: (Priority?) -> Void
+    
+    
+    let onSetDone: (Bool) -> Void
+    let onSetInProgress: (Bool) -> Void
+    let onSetDueDate: (Date?) -> Void
+    let onSetPlannedDate: (Date?) -> Void
 
     //WHY: task is a value, so we keep local selection state for the picker
     //HOW: nil means Auto, otherwise it is the user override
     @State private var selectedOverride: Priority?
+    
+    @State private var showPlannerEditor = false
 
     static func == (lhs: TodoRow, rhs: TodoRow) -> Bool {
         lhs.task == rhs.task && lhs.theme == rhs.theme
@@ -21,13 +31,23 @@ struct TodoRow: View, Equatable {
         task: TodoItem,
         theme: AppTheme,
         onToggle: @escaping () -> Void,
-        onSetPriorityOverride: @escaping (Priority?) -> Void
+        onSetPriorityOverride: @escaping (Priority?) -> Void,
+        onSetDone: @escaping (Bool) -> Void,
+        onSetInProgress: @escaping (Bool) -> Void,
+        onSetDueDate: @escaping (Date?) -> Void,
+        onSetPlannedDate: @escaping (Date?) -> Void
     ) {
         self.task = task
         self.theme = theme
         self.onToggle = onToggle
         self.onSetPriorityOverride = onSetPriorityOverride
+        self.onSetDone = onSetDone
+        self.onSetInProgress = onSetInProgress
+        self.onSetDueDate = onSetDueDate
+        self.onSetPlannedDate = onSetPlannedDate
         _selectedOverride = State(initialValue: task.userPriorityOverride)
+        
+        
     }
 
     var body: some View {
@@ -47,6 +67,9 @@ struct TodoRow: View, Equatable {
                 //what the app is actually using
                 Text("Priority: \(task.effectivePriority.title)")
                     .font(.caption)
+                    .foregroundStyle(.white.opacity(0.75))
+                Text(plannerSummary)
+                    .font(.caption2)
                     .foregroundStyle(.white.opacity(0.75))
 
                 // WHY: if the user manually overrides priority, the auto guess is just noise
@@ -88,5 +111,26 @@ struct TodoRow: View, Equatable {
                 .buttonStyle(.plain)
             }
         }
+    }
+    
+    //step 5
+    private var plannerSummary: String {
+        var parts = [task.plannerStatus]
+        
+        if let plannedDate = task.plannedDate {
+            parts.append("Plan: \(plannedDate.plannerShortText)")
+        }
+        
+        if let dueDate = task.dueDate {
+            parts.append("Due: \(dueDate.plannerShortText)")
+        }
+        
+        return parts.joined(separator: " | ")
+    }
+} // todorow struct ends
+
+private extension Date {
+    var plannerShortText: String {
+        formatted(.dateTime.weekday(.abbreviated).month(.abbreviated).day())
     }
 }

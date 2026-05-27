@@ -130,6 +130,9 @@ struct TodoItem: Identifiable, Codable, Equatable {
     var title: String
     var isDone: Bool
     var createdAt: Date
+    var isInProgress: Bool
+    var dueDate: Date?
+    var plannedDate: Date?
     
     var predictedPriority: Priority
     var priorityConfidence: Double
@@ -145,6 +148,9 @@ struct TodoItem: Identifiable, Codable, Equatable {
         self.id = UUID()
         self.title = title
         self.isDone = false
+        self.isInProgress = false
+        self.dueDate = nil
+        self.plannedDate = nil
         self.predictedPriority = predictedPriority
         self.priorityConfidence = priorityConfidence
         self.createdAt = Date()
@@ -155,6 +161,12 @@ struct TodoItem: Identifiable, Codable, Equatable {
     
     var effectivePriority: Priority {
         userPriorityOverride ?? predictedPriority
+    }
+    
+    var plannerStatus: String {
+        if isDone { return "Finished" }
+        if isInProgress { return "In Progress"}
+        return "Not Started"
     }
     
     var category: TodoCategory {

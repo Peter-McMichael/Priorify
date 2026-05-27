@@ -51,6 +51,18 @@ struct TodoListView: View {
                    onSetPriorityOverride: { task, newOverride in
                        store.setUserPriorityOverride(newOverride, for: task)
                    },
+                   onSetDone: { task, isDone in
+                       store.setDone(isDone, for: task, achievementStore: achievementStore)
+                   },
+                   onSetInProgress: { task, inProgress in
+                       store.setInProgress(inProgress, for: task)
+                   },
+                   onSetDueDate: { task, date in
+                       store.setDueDate(date, for: task)
+                   },
+                   onSetPlannedDate: { task, date in
+                       store.setPlannedDate(date, for: task)
+                   },
                    onDelete: { offsets, sectionTasks in
                        store.deleteTasks(at: offsets, in: sectionTasks)
                    }
@@ -177,6 +189,10 @@ private struct TodoTaskList: View, Equatable {
    let theme: AppTheme
    let onToggle: (TodoItem) -> Void
    let onSetPriorityOverride: (TodoItem, Priority?) -> Void
+    let onSetDone: (TodoItem, Bool) -> Void
+    let onSetInProgress: (TodoItem, Bool) -> Void
+    let onSetDueDate: (TodoItem, Date?) -> Void
+    let onSetPlannedDate: (TodoItem, Date?) -> Void
    let onDelete: (IndexSet, [TodoItem]) -> Void
 
    //this tells SwiftUI what counts as a real visual change for this view
@@ -201,6 +217,18 @@ private struct TodoTaskList: View, Equatable {
                            onToggle: { onToggle(task) },
                            onSetPriorityOverride: { newOverride in
                                onSetPriorityOverride(task, newOverride)
+                           },
+                           onSetDone: { isDone in
+                               onSetDone(task, isDone)
+                           },
+                           onSetInProgress: { inProgress in
+                               onSetInProgress(task, inProgress)
+                           },
+                           onSetDueDate: { date in
+                               onSetDueDate(task, date)
+                           },
+                           onSetCompletedDate: { date in
+                               onSetPlannedDate(task, date)
                            }
                        )
                        //SwiftUI can skip rebuilding this row if the row data did not change.

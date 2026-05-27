@@ -95,6 +95,48 @@ final class TodoStorage: ObservableObject {
         
         commitChanges()
     }
+    
+    func setInProgress(_ inProgress: Bool, for task: TodoItem) {
+        guard let index = tasks.firstIndex(where: { $0.id == task.id }) else { return }
+        tasks[index].isInProgress = inProgress
+        
+        if inProgress {
+            tasks[index].isDone = false
+        }
+        
+        commitChanges()
+    }
+    
+    func setDueDate(_ date: Date?, for task: TodoItem) {
+        guard let index = tasks.firstIndex(where: { $0.id == task.id }) else { return }
+        tasks[index].dueDate = date
+        
+        commitChanges()
+    }
+    
+    func setPlannedDate(_ date: Date?, for task: TodoItem) {
+        guard let index = tasks.firstIndex(where: { $0.id == task.id }) else { return }
+        tasks[index].plannedDate = date
+        
+        commitChanges()
+    }
+    
+    func setDone(_ isDone: Bool, for task: TodoItem, achievementStore: AchievementStore? = nil) {
+        guard let index = tasks.firstIndex(where: { $0.id == task.id }) else { return }
+        
+        let wasDone = tasks[index].isDone
+        tasks[index].isDone = isDone
+        
+        if isDone {
+            tasks[index].isInProgress = false
+        }
+        
+        if !wasDone && isDone {
+            achievementStore?.recordTaskCompleted(task: tasks[index])
+        }
+        
+        commitChanges()
+    }
 
     func toggleDone(for task: TodoItem, achievementStore: AchievementStore? = nil) {
         //find the task in our main array (by id) and flip done/not done

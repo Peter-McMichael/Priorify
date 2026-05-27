@@ -46,10 +46,40 @@
             filePath = "ADHD Support/To_do_list/TodoListView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "TodoTaskList"
             landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "6838BC78-1B46-4885-AC46-5DD595527F8F - d43532f6602fe6da"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;ADHD_Support.TodoStorage.TodoSection&gt;, ADHD_Support.TodoCategory, &lt;&lt;opaque return type of SwiftUI.View.clearSectionStyle() -&gt; some&gt;&gt;.0&gt; in ADHD_Support.TodoTaskList.body.getter : some"
+                  moduleName = "ADHD Support.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/homefolder/Documents/XcodeProjects/ADHD-Support/ADHD%20Support/To_do_list/TodoListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195">
+               </Location>
+               <Location
+                  uuid = "6838BC78-1B46-4885-AC46-5DD595527F8F - f2c3baeb2c9d4e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (ADHD_Support.TodoStorage.TodoSection) -&gt; &lt;&lt;opaque return type of SwiftUI.View.clearSectionStyle() -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;ADHD_Support.TodoStorage.TodoSection&gt;, ADHD_Support.TodoCategory, &lt;&lt;opaque return type of SwiftUI.View.clearSectionStyle() -&gt; some&gt;&gt;.0&gt; in ADHD_Support.TodoTaskList.body.getter : some"
+                  moduleName = "ADHD Support.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/homefolder/Documents/XcodeProjects/ADHD-Support/ADHD%20Support/To_do_list/TodoListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "196"
+                  endingLineNumber = "196">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
