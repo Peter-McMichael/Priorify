@@ -11,7 +11,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		441986DB2ECD4ADB00AEE4A9 /* ADHD Support.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ADHD Support.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		441986DB2ECD4ADB00AEE4A9 /* ADHD Support.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "ADHD Support.app"; path = "/Users/homefolder/Documents/XcodeProjects/ADHD-Support/build/Debug-iphoneos/ADHD Support.app"; sourceTree = "<absolute>"; };
 		448802C92FAAD0E7004773B3 /* README 2.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "README 2.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -39,16 +39,7 @@
 			children = (
 				448802C92FAAD0E7004773B3 /* README 2.md */,
 				441986DD2ECD4ADB00AEE4A9 /* ADHD Support */,
-				441986DC2ECD4ADB00AEE4A9 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		441986DC2ECD4ADB00AEE4A9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				441986DB2ECD4ADB00AEE4A9 /* ADHD Support.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -101,7 +92,7 @@
 			mainGroup = 441986D22ECD4ADB00AEE4A9;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 441986DC2ECD4ADB00AEE4A9 /* Products */;
+			productRefGroup = 441986D22ECD4ADB00AEE4A9;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

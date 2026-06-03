@@ -100,6 +100,14 @@ struct TodoRow: View, Equatable {
             Spacer()
             //MARK: - play button
             
+            Button {
+                showPlannerEditor = true
+            } label: {
+                Image(systemName: "calendar")
+                    .font(.title2)
+                    .foregroundStyle(theme.focusColor)
+            }
+            
             if !task.isDone {
                 NavigationLink {
                     TaskPomodoroView(task: task, theme: theme)
@@ -110,6 +118,9 @@ struct TodoRow: View, Equatable {
                 }
                 .buttonStyle(.plain)
             }
+        }
+        .sheet(isPresented: $showPlannerEditor) {
+            TaskPlannerEditorView(task: task, theme: theme, onSetDone: onSetDone, onSetInProgress: onSetInProgress, onSetDueDate: onSetDueDate, onSetPlannedDate: onSetPlannedDate)
         }
     }
     
@@ -134,3 +145,4 @@ private extension Date {
         formatted(.dateTime.weekday(.abbreviated).month(.abbreviated).day())
     }
 }
+

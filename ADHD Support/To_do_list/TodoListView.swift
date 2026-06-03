@@ -227,7 +227,7 @@ private struct TodoTaskList: View, Equatable {
                            onSetDueDate: { date in
                                onSetDueDate(task, date)
                            },
-                           onSetCompletedDate: { date in
+                           onSetPlannedDate: { date in
                                onSetPlannedDate(task, date)
                            }
                        )

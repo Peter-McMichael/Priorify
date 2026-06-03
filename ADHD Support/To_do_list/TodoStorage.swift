@@ -186,6 +186,16 @@ final class TodoStorage: ObservableObject {
         let title: String
         let tasks: [TodoItem]
     }
+    
+    struct PlannerDay: Identifiable, Equatable {
+        let date: Date
+        
+        let tasks: [TodoItem]
+        
+        var id: Date {
+            Calendar.current.startOfDay(for: date)
+        }
+    }
 
 
     //MARK: - sorting
